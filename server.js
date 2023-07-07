@@ -16,9 +16,12 @@ const dotenv = require('dotenv')
 
 
   const app=express();
-  const PORT=process.env.PORT || 4000;
+  PORT = 5000
+DB_URI = 'mongodb://0.0.0.0:27017/project';
+
+
 const jsonParser = bodyparser.json()
-dotenv.config({path: 'config.env'})
+
 
 
   app.set('view engine','ejs');
@@ -63,7 +66,7 @@ dotenv.config({path: 'config.env'})
   })
 
   //database connection
-  mongoose.connect(process.env.DB_URI,{useNewUrlParser :true,UseUnifiedTopology:true});
+  mongoose.connect(DB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
   const db=mongoose.connection;
   db.on("error",(error)=>console.log('error'));
   db.once("open",()=>console.log("connected to the database"));
