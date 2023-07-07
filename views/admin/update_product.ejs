@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DarkPan - Bootstrap 5 Admin Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="/adminstyle/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="/https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+   
+    <!-- Libraries Stylesheet -->
+    <link href="/adminstyle/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/adminstyle/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/adminstyle/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/adminstyle/css/style.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/55028760d5.js" crossorigin="anonymous"></script>
+ 
+     <!-- style for table in category -->
+    <style>
+        /* Add responsive styles to the table */
+        .table-responsive {
+            
+          overflow-x: auto;
+        }
+        
+        table {
+          width: 50%;
+         
+        }
+        
+        th, td {
+          padding: 8px;
+          text-align: left;
+        
+        }
+        
+        /* Adjust the table for smaller screens */
+        @media screen and (max-width: 600px) {
+          table {
+            display: block;
+            overflow-x: auto;
+          }
+          
+          th, td {
+            display: block;
+            width: 100%;
+          }
+        }
+      </style>
+</head>
+
+
+ <!-- Sidebar Start -->
+ <div class="sidebar pe-4 pb-3">
+  <nav class="navbar bg-secondary navbar-dark">
+      <a href="index.html" class="navbar-brand mx-4 mb-3">
+          <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
+      </a>
+      <div class="d-flex align-items-center ms-4 mb-4">
+          <div class="position-relative">
+              <img class="rounded-circle" src="/adminstyle/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+              <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+          </div>
+          <div class="ms-3">
+              <h6 class="mb-0">Jhon Doe</h6>
+              <span>Admin</span>
+          </div>
+      </div>
+      <div class="navbar-nav w-100">
+          <a href="/admin_dashboard" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+          <a href="/product" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Products</a>
+          <a href="/category" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Category</a>
+          <a href="/users" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Users</a>
+
+      </div>
+  </nav>
+</div>
+<!-- Sidebar End -->
+
+<div class="content">
+   <!-- Navbar Start -->
+   <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+    <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+        <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+    </a>
+    <a href="#" class="sidebar-toggler flex-shrink-0">
+        <i class="fa fa-bars"></i>
+    </a>
+    <form class="d-none d-md-flex ms-4">
+        <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+    </form>
+    <div class="navbar-nav align-items-center ms-auto">
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="fa fa-envelope me-lg-2"></i>
+                <span class="d-none d-lg-inline-flex">Message</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                <a href="#" class="dropdown-item">
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle" src="/adminstyle/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="ms-2">
+                            <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                            <small>15 minutes ago</small>
+                        </div>
+                    </div>
+                </a>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item">
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle" src="/adminstyle/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="ms-2">
+                            <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                            <small>15 minutes ago</small>
+                        </div>
+                    </div>
+                </a>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item">
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle" src="/adminstyle/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="ms-2">
+                            <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                            <small>15 minutes ago</small>
+                        </div>
+                    </div>
+                </a>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item text-center">See all message</a>
+            </div>
+        </div>
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="fa fa-bell me-lg-2"></i>
+                <span class="d-none d-lg-inline-flex">Notificatin</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                <a href="#" class="dropdown-item">
+                    <h6 class="fw-normal mb-0">Profile updated</h6>
+                    <small>15 minutes ago</small>
+                </a>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item">
+                    <h6 class="fw-normal mb-0">New user added</h6>
+                    <small>15 minutes ago</small>
+                </a>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item">
+                    <h6 class="fw-normal mb-0">Password changed</h6>
+                    <small>15 minutes ago</small>
+                </a>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item text-center">See all notifications</a>
+            </div>
+        </div>
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <img class="rounded-circle me-lg-2" src="/adminstyle/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                <span class="d-none d-lg-inline-flex">John Doe</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                <a href="#" class="dropdown-item">My Profile</a>
+                <a href="#" class="dropdown-item">Settings</a>
+                <a href="#" class="dropdown-item">Log Out</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->
+
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .form-group input,.form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .form-group textarea {
+    height: 100px;
+  }
+
+  .form-group input[type="file"] {
+    padding: 5px 0;
+  }
+
+  .form-group button,.form-select {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #000000ad;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+  }
+</style>
+
+
+<div class="container">
+  <h1>Update Product</h1>
+  <form action="/update_submit/<%= product._id%>" method="post" enctype="multipart/form-data" >
+    <div class="form-group">
+      <label for="productName">Product Name</label>
+      <input type="text"   name="name" placeholder="Enter product name" value="<%= product.name %>">
+    </div>
+    <div class="form-group">
+      <label for="productDescription">Product Description</label>
+      <textarea  name="description" placeholder="Enter product description"><%= product.description %> </textarea>
+    </div>
+ 
+    <div class="mt-2">
+      <label for="formFileLg" class="form-label">Select Image</label>
+      <input class="form-control form-control-lg bg-dark"  id="formFileLg" type="file" multiple name="image">
+  </div>
+  <div class="mt-2">
+    <label for="existingImages" class="form-label">Existing Images</label>
+    <div id="existingImages">
+      <% product.image.forEach((image) => { %>
+        <img src="/uploads/<%= image %>" class="existing-image"   alt="Existing Image">
+      <% }) %>
+    </div>
+  </div>
+    <div class="form-group">
+      <label for="productbrand">Product Brand</label>
+      <input type="text"  name="brand" placeholder="Enter product brand" value="<%= product.brand %>">
+    </div>
+    <div class="form-group">
+      <label for="productPrice">Product Price</label>
+      <input type="text"  name="price" placeholder="Enter product price" value="<%= product.price %>">
+    </div>
+    <div class="form-group">
+      <label for="productcategory">Select Category</label>
+      <!-- <input type="type" name="category" placeholder="Enter product price"> -->
+ 
+      <select class="form-select" name="category" id="floatingselect">
+        <% details.categories.forEach(category => { %>
+          <option value="<%= category.id %>" <% if (category.id.toString() === product.category.toString()) { %> selected <% } %>>
+            <%= category.name %>
+          </option>
+        <% }) %>
+      </select>
+      
+      <% if (product.offerPrice > 0) { %>
+        <div class="form-group">
+          <label for="offerPrice">Offer Price</label>
+          <% if (product.offerPrice) { %>
+            <input type="text" name="offerPrice" placeholder="Enter offer price" value="<%= product.offerPrice %>">
+          <% } else { %>
+            <input type="text" name="offerPrice" placeholder="Enter offer price">
+          <% } %>
+        </div>
+      <% } %>
+      
+
+    </div>
+    <div class="form-group">
+      <label for="productstock"> count in stock</label>
+      <input type="text"  name="countInStock" placeholder="Enter stock " value="<%= product.countInStock %>">
+    </div>
+
+ 
+   
+   
+    <div class="form-group">
+      <button type="submit">Add Product</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  function viewImage(event) {
+      for(let i = 0;i<target.files.length;i++){
+          document.getElementById('imgView').src = URL.createObjectURL(event.target.files[i])
+      }
+      
+  }
+</script>
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+
+<!-- JavaScript Libraries -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="adminstyle/lib/chart/chart.min.js"></script>
+<script src="adminstyle/lib/easing/easing.min.js"></script>
+<script src="adminstyle/lib/waypoints/waypoints.min.js"></script>
+<script src="adminstyle/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="adminstyle/lib/tempusdominus/js/moment.min.js"></script>
+<script src="adminstyle/lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="adminstyle/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="adminstyle/js/main.js"></script>
+
+
+<!------for showing images in update product field------->
+<style>
+  .existing-image {
+    max-width: 100px;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

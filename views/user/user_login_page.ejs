@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="userstyle/css/loginpage_style/loginstyle.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
+ <style>
+    /* CSS styles for the login form */
+    .login {
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f2f2f2;
+    }
+
+    .field {
+      margin-bottom: 10px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .pass-link {
+      margin-bottom: 10px;
+    }
+
+    .btn-layer {
+      position: relative;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .signup-link {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <% if (message) { %>
+    <h5 class="text-success text-center mt-2 small" id="msg"><%= message %></h5>
+  <% } %>
+  <form action="/login" method="post" class="login" name="signup">
+    <div class="field">
+      <input type="email" name="email" placeholder="Email Address" >
+    </div>
+    <div class="field">
+      <input type="password" name="password" placeholder="Password" >
+    </div>
+    <div class="pass-link"><a href="/forgot_password">Forgot password?</a></div>
+    <div class="field btn">
+      <div class="btn-layer"></div>
+      <input type="submit" value="Login">
+    </div>
+    <div class="signup-link">Not a member? <a href="/signup_user">Signup now</a></div>
+  </form>
+</body>
+
+<!----validation----->
+<script>
+  document.forms["signup"].addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    let email = this["email"].value.trim();
+    let password = this["password"].value.trim();
+
+    if (email === "") {
+      swal("Error", "Email must be filled out", "error");
+      return false;
+    }
+
+    // Regex for email validation
+    var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!emailRegex.test(email)) {
+      swal("Error", "Invalid email address", "error");
+      return false;
+    }
+
+    if (password === "") {
+      swal("Error", "Password must be filled out", "error");
+      return false;
+    }
+
+    // Form validation passed, submit the form
+    this.submit();
+  });
+</script>
+</html>

@@ -1,0 +1,50 @@
+const mongoose=require('mongoose')
+
+const productSchema = mongoose.Schema({
+  name :{
+    type: String,
+    required :true
+  },
+  description :{
+    type :String,
+    required : true
+  },
+  images :{
+    type :String,
+    default : ''
+  },
+  image :[{
+    type :String
+  }],
+  brand :{
+    type :String,
+    default : ''
+  },
+price: {
+  type :Number,
+  default :0
+},
+offerPrice :{
+  type :Number ,
+  default :''
+},
+category:{
+  type :mongoose.Schema.Types.ObjectId,
+  ref:'Category',
+  required :true
+},
+countInStock : {
+  type: Number,
+  required :true,
+  min :0,
+  max: 200,
+},
+
+dateCreated :{
+  type:Date,
+  default : Date.now
+}
+
+})
+
+exports.Product=mongoose.model('Product',productSchema)

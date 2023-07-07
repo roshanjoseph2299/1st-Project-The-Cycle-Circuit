@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="userstyle/css/loginpage_style/loginstyle.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
+<style>
+  /* CSS styles for the signup form */
+  .signup {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+  }
+
+  .field {
+    margin-bottom: 10px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  .btn-layer {
+    position: relative;
+  }
+
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <form action="/add_user_signup" method="post" class="signup" name="signup" >
+    <div class="field">
+      <input type="text" placeholder="Name" name="name" >
+    </div>
+    <div class="field">
+      <input type="text" placeholder="Email Address" name="email"  >
+    </div>
+
+   
+    <div class="field">
+      <input type="text" placeholder="Phone Number" name="phone" >
+    </div>
+    <div class="field">
+      <input type="text" placeholder="Referal Code" name="referralCode" >
+    </div>
+ 
+             
+   
+   
+    <div class="field">
+      <input type="text" placeholder="Password" name="password" >
+    </div>
+    <div class="field">
+      <input type="text" placeholder="Confirm Password" name="confirmpassword" >
+    </div>
+    
+    <div class="field btn">
+      <div class="btn-layer"></div>
+      <input type="submit" value="Signup">
+    </div>
+  </form>
+</body>
+
+
+<script>
+  document.forms["signup"].addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    let name = this["name"].value.trim();
+    let email = this["email"].value.trim();
+    let phone = this["phone"].value.trim();
+    let password = this["password"].value.trim();
+    let confirmPassword = this["confirmpassword"].value.trim();
+
+    if (name === "") {
+      swal("Error", "Name must be filled out", "error");
+      return false;
+    }
+
+    if (email === "") {
+      swal("Error", "Email must be filled out", "error");
+      return false;
+    } else {
+      var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if (!emailRegex.test(email)) {
+        swal("Error", "Invalid email address", "error");
+        return false;
+      }
+    }
+
+    if (phone === "") {
+      swal("Error", "Phone number must be filled out", "error");
+      return false;
+    }
+
+    if (password === "") {
+      swal("Error", "Password must be filled out", "error");
+      return false;
+    }
+
+    if (confirmPassword === "") {
+      swal("Error", "Confirm password must be filled out", "error");
+      return false;
+    }
+
+    if (password !== confirmPassword) {
+      swal("Error", "Passwords do not match", "error");
+      return false;
+    }
+
+    // Form validation passed, submit the form
+    this.submit();
+  });
+</script>
+
+</html>

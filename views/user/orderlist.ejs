@@ -1,0 +1,163 @@
+<%- include('../user/partials/header') -%>
+<%- include('../user/partials/headernav') -%>
+
+<div class="container-fluid pt-4 px-4 m-t-50">
+  <div class="bg-white text-center rounded p-4">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+          <h3 class="mb-0">My Orders</h3>
+       
+      </div>
+      <div class="table-responsive">
+          <table class="table text-start align-middle table-bordered table-hover mb-0">
+              <thead>
+                  <tr class="text-dark">
+                      <th scope="col">Date</th>
+                      <th scope="col">Product Name</th>
+                      <!-- <th scope="col">Name</th> -->
+                      <th scope="col">Amount</th>
+                      <th scope="col">Image</th>
+                      <th scope="col">Payment</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Action</th>
+                      <th scope="col">Details</th>
+
+                  </tr>
+              </thead>
+              <tbody>  
+                  <% orders.reverse().forEach((orders,index) => { %>
+                  <tr>
+                      <td><%= orders.createdAt.toLocaleDateString() %></td>
+                      <td>
+                          <% orders.items.forEach((item, index) => { %>
+                            <% if (item.product) { %>
+                              <%= index+1 %>. <%= item.product.name %> <br>
+                              <% } %>
+                          <% }) %>
+                      </td>
+                      <!-- <td><%= orders.user.name %></td> -->
+                      <td><%= orders.total %></td>
+                      <td>
+                          <% orders.items.forEach((item, index) => { %>
+                            <% if( item.product) { %>
+                              <img src="<%= item.product.image[0] %>" alt="" width="60px" class="img-thumbnail" > <br>
+                              <% } %>
+                          <% }) %>    
+                      </td>
+                      <td><%= orders.payment_method %></td>
+                      <td>
+                        <%= orders.status %> <br>
+                        <a data-bs-toggle="modal" data-bs-target="#exampleModal<%= orders._id %>">
+                         
+                        </a>
+                      </td>
+                      <% if(orders.status == 'Shipped' || orders.status == 'Pending') { %>
+                        <td>
+                          <button  class="btn btn-sm btn-danger" data-toggle="modal" data-target="#cancelModal_<%= orders._id %>">Cancel</button>                     
+                        </td>
+                        <% } else if (orders.status == 'Delivered' && !orders.returnExpired) { %>
+                          <td>
+                          <button  class="btn btn-sm btn-danger" data-toggle="modal" data-target="#returnModal_<%= orders._id %>">Return</button>                    
+                        </td>
+                        <% } else if(orders.returnExpired){ %>
+                          <td>Return Not available </td>
+                        <% } else if(orders.status == 'Cancelled') { %>
+                          <td>Order Cancelled</td>
+                          <% } else { %>
+                            <td>Order Returned</td>
+                      <% } %>
+                      <td><a href="/orderView/<%= orders._id  %>" class="btn btn-primary">View</a></td>
+                        </tr>
+                
+                      <!-- Cancel Modal -->
+                      <div class="modal fade" id="cancelModal_<%= orders._id %>" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel_<%= orders._id %>" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="cancelModalLabel_<%= orders._id %>">Cancel Order</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Are you sure you want to cancel this order?</p>
+                              <form action="/cancelOrder/<%= orders._id %>" method="POST">
+                                <div class="form-group">
+                                  <label for="cancelReason">Reason for cancellation:</label>
+                                  <textarea class="form-control" id="cancelReason" name="cancelReason" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-danger" onclick="showSuccessAlert()">Cancel Order</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!----return modal----->
+                      <div class="modal fade" id="returnModal_<%= orders._id %>" tabindex="-1" role="dialog" aria-labelledby="returnModalLabel_<%= orders._id %>" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="cancelModalLabel_<%= orders._id %>">Return Order</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Are you sure you want to Return this order?</p>
+                              <form action="/returnOrder/<%= orders._id %>" method="POST">
+                                <div class="form-group">
+                                  <label for="cancelReason">Reason for Returning:</label>
+                                  <textarea class="form-control" id="cancelReason" name="cancelReason" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-danger" onclick="showSuccessAlert()">Return Order</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      
+
+
+
+             
+                     
+                        <!-----for pop up message for reason-------->
+                        
+                    
+                    
+                 
+                  <% }) %>
+                  
+               
+                    
+                
+
+              
+              </tbody>
+              
+          </table>
+        
+      </div>
+     
+  </div>
+  
+</div>
+
+<!-----for cussecc message----->
+<script language="JavaScript">
+  function showSuccessAlert() { 
+    swal({
+      title: "Success!",
+      text: "Your data has been saved. Thank you!",
+    
+      buttons: false,
+      timer: 8000 // Set the timer to automatically close the alert after 2 seconds
+    });
+  }
+</script>
+
+
+
+
+<%- include('../user/partials/footer') -%>

@@ -1,0 +1,325 @@
+<%- include('../admin/partials/header') -%>
+<%- include('../admin/partials/sidebar') -%>
+
+
+ <!-- Sidebar Start -->
+ <div class="sidebar pe-4 pb-3">
+  <nav class="navbar bg-secondary navbar-dark">
+      <a href="index.html" class="navbar-brand mx-4 mb-3">
+          <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
+      </a>
+      <div class="d-flex align-items-center ms-4 mb-4">
+          <div class="position-relative">
+              <img class="rounded-circle" src="adminstyle/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+              <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+          </div>
+          <div class="ms-3">
+              <h6 class="mb-0">Jhon Doe</h6>
+              <span>Admin</span>
+          </div>
+      </div>
+      <div class="navbar-nav w-100">
+          <a href="/admin_dashboard" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+          <a href="/product" class="nav-item nav-link active "><i class="fa fa-tachometer-alt me-2"></i>Products</a>
+          <a href="/category" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Category</a>
+          <a href="/users" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Users</a>
+          <a href="/orderList" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Order List</a>
+          <a href="/salesReport" class="nav-item nav-link  "><i class="fa fa-tachometer-alt me-2"></i>Sales Report</a>
+          <a href="/couponPage" class="nav-item nav-link  "><i class="fa fa-tachometer-alt me-2"></i>Coupon Page </a>
+      </div>
+  </nav>
+</div>
+<!-- Sidebar End -->
+
+
+<body>
+  <div class="container-fluid position-relative d-flex p-0">
+      <!-- Spinner Start -->
+      <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+          <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+              <span class="sr-only">Loading...</span>
+          </div>
+      </div>
+      <!-- Spinner End -->
+
+
+
+      <!-- Content Start -->
+      <div class="content">
+       
+
+
+          <%- include('../admin/partials/admin_navbar.ejs')%>
+
+          
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              margin: 0;
+              padding: 0;
+            }
+        
+            .container {
+              max-width: 800px;
+              margin: 0 auto;
+              padding: 20px;
+            }
+        
+            .form-group {
+              margin-bottom: 20px;
+            }
+        
+            .form-group label {
+              display: block;
+              margin-bottom: 5px;
+              font-weight: bold;
+            }
+        
+            .form-group input,.form-group select,
+            .form-group textarea {
+              width: 100%;
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+            }
+        
+            .form-group textarea {
+              height: 100px;
+            }
+        
+            .form-group input[type="file"] {
+              padding: 5px 0;
+            }
+        
+            .form-group button,.form-select {
+              padding: 10px 20px;
+              background-color: #fff;
+              color: #000000ad;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              
+            }
+          </style>
+
+
+          <div class="container">
+            <h1>Add New Product</h1>
+            <form action="/add_product_submit" method="post" enctype="multipart/form-data" onsubmit="validateForm(event)">
+              <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text"   name="name" placeholder="Enter product name">
+              </div>
+              <div class="form-group">
+                <label for="productDescription">Product Description</label>
+                <textarea  name="description" placeholder="Enter product description" ></textarea>
+              </div>
+              <!-- <div class="form-group">
+                <label for="productImage">Product Image</label>
+                <input type="file" name="image" >
+              </div> -->
+              <div class="mt-2">
+                <label for="formFileLg" class="form-label">Select Image</label>
+                <!-- <input class="form-control form-control-lg bg-dark" id="formFileLg" type="file" multiple name="image" onchange="handleFileSelect(event)"> -->
+                <input class="form-control form-control-lg bg-dark"  id="formFileLg" type="file" multiple name="image" >
+              </div>
+              
+            
+          
+              <div class="form-group">
+                <label for="productbrand">Product Brand</label>
+                <input type="text"  name="brand" placeholder="Enter product Brand">
+              </div>
+              <div class="form-group">
+                <label for="productPrice">Product Price</label>
+                <input type="text"  name="price" placeholder="Enter product price">
+              </div>
+              <div class="form-group">
+                <label for="productcategory">Select Category</label>
+                <!-- <input type="type" name="category" placeholder="Enter product price"> -->
+           
+              <select class="form-select " name="category" id="floatingselect" onchange="checkCategory()" >
+                  <option value="">Select Category</option>
+                  <% categories.forEach(category =>{%> 
+                    <option value="<%= category.id%>">
+                      <%= category.name %>
+                    </option>
+                    <% }) %> 
+                </select>
+              </div>
+              <div id="dynamicFieldContainer"></div> 
+              <input type="hidden" name="offerPrice" id="offerPriceInput">
+
+              <div class="form-group">
+                <label for="productstock"> count in stock</label>
+                <input type="text"  name="countInStock" placeholder="Enter stock">
+              </div>
+
+           
+             
+             
+              <div class="form-group">
+                <button type="submit">Add Product</button>
+              </div>
+            </form>
+          </div>
+
+          <script>
+            function validateForm(event) {
+              event.preventDefault();
+          
+              // Validate form fields
+              var productName = document.getElementsByName("name")[0].value;
+              var productDescription = document.getElementsByName("description")[0].value;
+              var productImage = document.getElementsByName("image")[0].value;
+              var productBrand = document.getElementsByName("brand")[0].value;
+              var productPrice = document.getElementsByName("price")[0].value;
+              var productCategory = document.getElementsByName("category")[0].value;
+              var productCountInStock = document.getElementsByName("countInStock")[0].value;
+          
+              if (productName === "") {
+                swal("Validation Error", "Please enter a product name", "error");
+                return;
+              }
+          
+              if (productDescription === "") {
+                swal("Validation Error", "Please enter a product description", "error");
+                return;
+              }
+          
+              if (productImage === "") {
+                swal("Validation Error", "Please select a product image", "error");
+                return;
+              }
+          
+              if (productBrand === "") {
+                swal("Validation Error", "Please enter a product brand", "error");
+                return;
+              }
+          
+              if (productPrice === "") {
+                swal("Validation Error", "Please enter a product price", "error");
+                return;
+              }
+          
+              if (productCategory === "") {
+                swal("Validation Error", "Please select a product category", "error");
+                return;
+              }
+          
+              if (productCountInStock === "") {
+                swal("Validation Error", "Please enter the count in stock", "error");
+                return;
+              }
+          
+              // If all validations pass, submit the form
+              event.target.submit();
+            }
+          </script>
+
+
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+
+
+<script>
+  function handleFileSelect(event) {
+    const files = event.target.files;
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        const image = new Image();
+        image.src = e.target.result;
+
+        image.onload = function () {
+          const cropper = new Cropper(image, {
+            aspectRatio: 4 / 3, // Set the desired aspect ratio (e.g., 4:3 for a rectangle crop)
+            viewMode: 1, // Set the cropping mode to restrict the crop area within the container
+            dragMode: 'move', // Allow the image to be repositioned within the container
+            guides: true, // Show guides for better visual alignment
+            autoCropArea: 0.8, // Define the initial crop area as a percentage of the image (e.g., 80%)
+            responsive: true, // Enable responsive behavior
+            crop: function (event) {
+              // Handle the crop event if needed
+            },
+          });
+        };
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+</script>
+
+
+
+
+<script>
+  function checkCategory() {
+    var select = document.getElementById("floatingselect");
+    var selectedCategory = select.options[select.selectedIndex].text;
+
+    var dynamicFieldContainer = document.getElementById("dynamicFieldContainer");
+    var offerPriceInput = document.getElementById("offerPriceInput");
+
+    if (selectedCategory === "URBAN") {
+      // Check if the additional field already exists
+      var existingField = document.getElementById("additionalField");
+      if (!existingField) {
+        // Create and append the new field
+        var newField = document.createElement("div");
+        newField.classList.add("form-group");
+        newField.innerHTML = `
+          <label for="additionalField">Add Offer Price</label>
+          <input type="text" name="additionalField" id="additionalField" placeholder="Enter additional field" onchange="updateOfferPrice()">
+        `;
+        dynamicFieldContainer.appendChild(newField);
+      }
+    } else {
+      // Remove the field and heading if they exist
+      var existingField = document.getElementById("additionalField");
+      if (existingField) {
+        existingField.parentNode.removeChild(existingField);
+
+        var existingHeading = document.querySelector('label[for="additionalField"]');
+        if (existingHeading) {
+          existingHeading.parentNode.removeChild(existingHeading);
+        }
+      }
+    }
+  }
+
+  function updateOfferPrice() {
+    var offerPriceInput = document.getElementById("offerPriceInput");
+    var additionalField = document.getElementById("additionalField");
+    offerPriceInput.value = additionalField.value;
+  }
+</script>
+
+
+
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="adminstyle/lib/chart/chart.min.js"></script>
+<script src="adminstyle/lib/easing/easing.min.js"></script>
+<script src="adminstyle/lib/waypoints/waypoints.min.js"></script>
+<script src="adminstyle/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="adminstyle/lib/tempusdominus/js/moment.min.js"></script>
+<script src="adminstyle/lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="adminstyle/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="adminstyle/js/main.js"></script>
+
+
+<%- include('../admin/partials/footer') -%>

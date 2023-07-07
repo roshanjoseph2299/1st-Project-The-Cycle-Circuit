@@ -1,0 +1,237 @@
+<%- include('../admin/partials/header') -%>
+
+ <!-- Sidebar Start -->
+ <div class="sidebar pe-4 pb-3">
+    <nav class="navbar bg-secondary navbar-dark">
+        <a href="index.html" class="navbar-brand mx-4 mb-3">
+            <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
+        </a>
+        <div class="d-flex align-items-center ms-4 mb-4">
+            <div class="position-relative">
+                <img class="rounded-circle" src="adminstyle/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+            </div>
+            <div class="ms-3">
+                <h6 class="mb-0">Jhon Doe</h6>
+                <span>Admin</span>
+            </div>
+        </div>
+        <div class="navbar-nav w-100">
+            <a href="/admin_dashboard" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="/product" class="nav-item nav-link  "><i class="fa fa-tachometer-alt me-2"></i>Products</a>
+            <a href="/category" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Category</a>
+            <a href="/users" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Users</a>
+          <a href="/orderList" class="nav-item nav-link active "><i class="fa fa-tachometer-alt me-2"></i>Order List</a>
+          <a href="/salesReport" class="nav-item nav-link  "><i class="fa fa-tachometer-alt me-2"></i>Sales Report</a>
+          <a href="/couponPage" class="nav-item nav-link  "><i class="fa fa-tachometer-alt me-2"></i>Coupon Page </a>
+
+            
+  
+        </div>
+    </nav>
+  </div>
+  <!-- Sidebar End -->
+
+
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+
+        <!-- Content Start -->
+        <div class="content">
+         
+
+
+            <%- include('../admin/partials/admin_navbar.ejs')%>
+          
+            <!-- Recent Sales Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">ORDERS</h6>
+                        <form class="d-flex">
+                          
+                        </form>
+                        <!-- <a href="/add_product">Update Order</a> -->
+                        
+                    </div>
+                    <div class="table-responsive">
+                        <% if (order.length > 0) { %>
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col">Index</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Product</th>
+                                    
+                                   
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Price</th>
+                                  
+                                    <th scope="col">Payment Method</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <% order.forEach((order, index) => { %>
+                                    <% if (order.items.some(item => item.product)) { %>
+                                      <tr>
+                                        <td><%= index+1 %></td>
+                                        <td><%= order.createdAt.toLocaleDateString() %></td>
+                                        <td>
+                                          <% order.items.forEach((item, index) => { %>
+                                            <% if (item.product) { %>
+                                              <%= index + 1 %>. <%= item.product.name %> <br>
+                                            <% } %>
+                                          <% }) %>
+                                        </td>
+                                        <td>
+                                          <% order.items.forEach((item, index) => { %>
+                                            <% if (item.product) { %>
+                                              <%= item.quantity %> <br>
+                                            <% } %>
+                                          <% }) %>
+                                        </td>
+                                        <td><%= order.user.name %></td>
+                                        <!-- <td>
+                                          <% order.items.forEach((item, index) => { %>
+                                            <% if (item.product) { %>
+                                              <img src="<%= item.product.image[0] %>" alt="" width="20px" style="border: none;" class="img-thumbnail"> <br>
+                                              
+                                            <% } %>
+                                          <% }) %>
+                                        </td> -->
+                                        <td><%= order.payment_method %></td>
+                                        <td><%= order.status %></td>
+                                        <% if (order.status !== 'Delivered' && order.status !== 'Amount refunded') { %>
+                                          <% if (order.status === 'Cancelled' ) { %>
+                                            <td>
+                                              <!-- <a data-bs-toggle="modal" data-bs-target="#exampleModal<%= order._id %>"> -->
+                                                <!-- Button content here -->
+                                                Order is <%= order.status %>
+                                             
+                                            </td>
+                                          <% } else { %>
+                                            <td style="cursor: pointer;">
+                                              <a data-bs-toggle="modal" data-bs-target="#exampleModal<%= order._id %>">
+                                                <i class="fas fa-pencil-alt align-center"></i>
+                                              </a>
+                                            </td>
+                                          <% } %>
+                                        <% } %>
+                                        
+                                      
+                                      </tr>
+  <!-- Modal -->
+              
+  <div class="modal fade" id="exampleModal<%= order._id  %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Status updated</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/update_order/<%= order._id %>" method="post">
+                <select name="status">
+                    
+                    <option value="Pending" <% if (order.status === 'Pending') { %>selected<% } %>>Pending</option>
+                    <option value="Delivered" <% if (order.status === 'Delivered') { %>selected<% } %>>Delivered</option>
+                    <option value="Shipped" <% if (order.status === 'Shipped') { %>selected<% } %>>Shipped</option>
+                    <option value="Cancelled" <% if (order.status === 'Cancelled') { %>selected<% } %>>Cancel</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </form>
+
+        </div>
+    </div>
+    </div>
+</div>
+
+                                    <% } %>
+                                  <% }) %>
+                                  
+                            </tbody>
+                        </table>
+                        <% } else { %>
+                            <p>No orders found.</p>
+                          <% } %>
+                    </div>
+                </div>
+            </div>
+          
+          
+          
+            <!-- pagination -->
+            <div class="pagination-container">
+                <ul class="pagination" id="pagination-list">
+                  <li class="page-item" id="prev-page">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                  </li>
+                  <!-- Page numbers will be dynamically added here -->
+                  <li class="page-item" id="next-page">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="visually-hidden">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              
+              
+              
+
+         
+
+        </div>
+        <!-- Content End -->
+ 
+          
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+    
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="adminstyle/lib/chart/chart.min.js"></script>
+    <script src="adminstyle/lib/easing/easing.min.js"></script>
+    <script src="adminstyle/lib/waypoints/waypoints.min.js"></script>
+    <script src="adminstyle/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="adminstyle/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="adminstyle/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="adminstyle/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    
+    <script>
+        function confirmDelete(productId) {
+            if (confirm("Are you sure you want to delete this Product?")) {
+                window.location.href = "/delete_product/" + productId;
+            }
+        }
+    </script>
+
+    <!-- Template Javascript -->
+    <script src="adminstyle/js/main.js"></script>
+
+
+  
+
+
+    <%- include('../admin/partials/footer') -%>

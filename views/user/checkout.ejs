@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Home</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/userstyle/images/icons/favicon.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/userstyle/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/userstyle/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/userstyle/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/userstyle/fonts/linearicons-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/userstyle/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/userstyle/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/userstyle/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/userstyle/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/userstyle/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/userstyle/vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/userstyle/vendor/MagnificPopup/magnific-popup.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/userstyle/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/userstyle/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/userstyle/css/main.css">
+<!--===============================================================================================-->
+
+<link rel="stylesheet" type='text/css' href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<script src="https://kit.fontawesome.com/55028760d5.js" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body class="animsition">
+	
+	<!-- Header -->
+	<header>
+		<!-- Header desktop -->
+		<div class="container-menu-desktop">
+			<!-- Topbar -->
+			
+			<div class="wrap-menu-desktop">
+				<nav class="limiter-menu-desktop container">
+					
+					<!-- Logo desktop -->		
+					<a href="#" class="logo-mobile">
+						<h4 style="color: rgb(0, 0, 0);" >𝙏𝙃𝙀 𝘾𝙔𝘾𝙇𝙀 𝘾𝙄𝙍𝘾𝙐𝙄𝙏</h4>
+					</a>
+
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu">
+							<li class="active-menu">
+								<a href="/">Home</a>
+								
+							</li>
+
+							<li>
+								<a href="/view_cart">Cart</a>
+							</li>
+
+						
+
+							<li>
+								<a href="/orderDetails">Order Details</a>
+							</li>
+
+							<li>
+								<a href="about.html">About</a>
+							</li>
+
+							<li>
+								<a href="contact.html">Contact</a>
+							</li>
+						</ul>
+					</div>	
+
+					<!-- Icon header -->
+					<div class="wrap-icon-header flex-w flex-r-m">
+					
+
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11  js-show-cart">
+							<i class="zmdi zmdi-shopping-cart"></i>
+						</div>
+
+						<!-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 " >
+							<i class="zmdi zmdi-favorite-outline"></i>
+						</a> -->
+
+						<a>
+			
+						<div class="main-menu"> 
+						<li  class="active-menu">
+						
+									<% if (locals.user) { %>
+										<a href="/user_detail">	<%= locals.user.name %></a>
+								<li><a href="/logout_user">logout</a></li>
+							<% } else { %>
+								<a  href="/login_page">My Account</a>
+							<% } %>
+						
+						</li>
+					</div>
+					</a>
+						
+					
+					</div>
+				</nav>
+			</div>	
+		</div>
+
+		<!-- Header Mobile -->
+		<div class="wrap-header-mobile">
+			<!-- Logo moblie -->		
+			<a href="#" class="logo-mobile">
+				<h4 style="color: rgb(0, 0, 0);" >𝙏𝙃𝙀 𝘾𝙔𝘾𝙇𝙀 𝘾𝙄𝙍𝘾𝙐𝙄𝙏</h4>
+			</a>
+
+			<!-- Icon header -->
+			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+					<i class="zmdi zmdi-search"></i>
+				</div>
+
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+					<i class="zmdi zmdi-shopping-cart"></i>
+				</div>
+
+				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+					<i class="zmdi zmdi-favorite-outline"></i>
+				</a>
+			</div>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
+
+
+		<!-- Menu Mobile -->
+		<div class="menu-mobile">
+			<ul class="topbar-mobile">
+				<li>
+					<div class="left-top-bar">
+						Free shipping for standard order over $100
+					</div>
+				</li>
+
+				<li>
+					<div class="right-top-bar flex-w h-full">
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							Help & FAQs
+						</a>
+
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							My Account
+						</a>
+
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							EN
+						</a>
+
+						<a href="/logout_user" class="flex-c-m p-lr-10 trans-04">
+							Logout
+						</a>
+						
+					</div>
+				</li>
+			</ul>
+
+			<ul class="main-menu-m">
+				<li>
+					<a href="index.html">Home</a>
+				
+					<span class="arrow-main-menu-m">
+						<i class="fa fa-angle-right" aria-hidden="true"></i>
+					</span>
+				</li>
+
+			
+
+
+				<li>
+					<a href="contact.html">Contact</a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Modal Search -->
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+			<div class="container-search-header">
+				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+					<img src="/userstyle/images/icons/icon-close2.png" alt="CLOSE">
+				</button>
+
+				<form class="wrap-search-header flex-w p-l-15">
+					<button class="flex-c-m trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="plh3" type="text" name="search" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+	</header>
+
+	<!-- Cart -->
+	<div class="wrap-header-cart js-panel-cart">
+		<div class="s-full js-hide-cart"></div>
+
+		<div class="header-cart flex-col-l p-l-65 p-r-25">
+			<div class="header-cart-title flex-w flex-sb-m p-b-8">
+				<span class="mtext-103 cl2">
+					Your Cart
+				</span>
+
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+			
+			<div class="header-cart-content flex-w js-pscroll">
+			
+				
+				<div class="w-full">
+					<!-- <div class="header-cart-total w-full p-tb-40">
+						Total: $75.00
+					</div> -->
+
+					<div class="header-cart-buttons flex-w w-full">
+						<a href="/view_cart" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							View Cart
+						</a>
+
+						<a href="/orderDetails" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+							Your Orders
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!------------------------main content--------------------->
+
+
+  <div class="bg0 m-t-50 p-b-140">
+            <div class="container">
+                <div class="flex-w flex-sb-m p-b-52">
+
+                    <!-- Search product -->
+                    <div class="dis-none panel-search w-full p-t-10 p-b-15">
+                        <div class="bor8 dis-flex p-l-15">
+                            <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
+                                <i class="zmdi zmdi-search"></i>
+                            </button>
+
+                            <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product"
+                                placeholder="Search">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ============ Main ============ -->
+
+                <section class="page-header">
+
+                </section>
+
+                <div class="page-wrapper">
+                    <div class="checkout shopping">
+                        <div class="container">
+                            <div class="row ">
+                                <div class="col-md-8 me-5">
+                            
+                                
+                                    <div class="block billing-details">
+                                        <h4 class="widget-title" style="color: #0fa5eb;">Billing Details</h4>
+                                        <form class="checkout-form" action="/checkoutproceed" method="post" id="checkout-form">
+                                            <div class="form-row">
+                                                <div class="col-md-6 form-group">
+                                                    <label for="full_name"></label>
+                                                    <input type="text" name="name" class="form-control" id="full_name"
+                                                        value="<%= username.name %>" placeholder="Full Name:" readonly
+                                                        style=" border: 1px solid #222;" >
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <label for="user_address"></label>
+                                                    <input type="tel" name="phone" class="form-control"
+                                                        id="user_address" value="<%= username.phone %>"
+                                                        placeholder="Phone Number:" readonly
+                                                        style=" border: 1px solid #222;">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="user_address"></label>
+                                                <input type="text" name="address" class="form-control" id="user_address"
+                                                    value="<%= address.address %> " placeholder="Address:" readonly
+                                                    style=" border: 1px solid #222;">
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6 form-group">
+                                                    <label for="user_city"></label>
+                                                    <input type="text" name="city" class="form-control" id="user_city"
+                                                        name="city" placeholder="City: " value="<%= address.city %>" readonly
+                                                        style=" border: 1px solid #222;">
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <label for="user_country"></label>
+                                                    <input type="text" name="state" class="form-control"
+                                                        id="user_country" placeholder="State:"
+                                                        value="<%= address.state %>"readonly
+                                                        style=" border: 1px solid #222;">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label for="user_post_code"></label>
+                                                    <input type="tel" name="pincode" class="form-control"
+                                                        id="user_post_code" placeholder="Zip Code: " readonly
+                                                        value="<%= address.pincode %>" style="border: 1px solid #222;">
+                                                </div>
+                                            </div>
+                                     
+                                    </div>
+
+                                    <div class="block">
+                                        <h3 class="widget-title" style="color: #12a3c7ec;">Payment Methods</h3>
+                                        <div class="payment-methods mt-4">
+                                            <div class="payment-method">
+                                                <input class="payment-method-input" type="radio" name="payment" id="paypal-payment" value="paypal" checked>
+                                                <label class="payment-method-label" for="card-payment">
+                                                    <span class="payment-method-icon"><i class="fa fa-credit-card"></i></span>
+                                                   paypal payment
+                                                </label>
+                                            </div>
+                                            <!-- <div class="payment-method">
+                                                <input class="payment-method-input" type="radio" name="payment" id="razorpay-payment" value="razorpay">
+                                                <label class="payment-method-label" for="razorpay-payment">
+                                                    <span class="payment-method-icon"><i class="fa fa-money"></i></span>
+                                                    Razorpay
+                                                </label>
+                                            </div> -->
+                                            <div class="payment-method">
+                                                <input class="payment-method-input" type="radio" name="payment" id="cod-payment" value="cod">
+                                                <label class="payment-method-label" for="cod-payment">
+                                                    <span class="payment-method-icon"><i class="fa fa-money"></i></span>
+                                                    Cash on Delivery
+                                                </label>
+                                            </div>
+                                        </div>
+                                
+                                            <div class="text-center mt-4">
+                                                <button type="submit" class="btn btn-primary">Place Order</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    
+                                    
+                                  
+                                </div>
+                                <div class="col-md-4 mt-5 border-dark rounded" style="border: 1px solid #bd929257;">
+                                    <div class="product-checkout-details">
+                                        <div class="block pt-3 pb-3">
+                                            <h4 class="widget-title mb-2" style="color: #1730d1;">Order Summary</h4>
+
+                                            <% if (cart.products && cart.products.length > 0) { %>
+                                            <% cart.products.forEach(function(product) { %>
+                                                <div class="media product-card ">
+
+                                                    <a class="pull-left mt-4" href="product-single.html">
+                                                        <img class="media-object img-thumbnail"
+                                                            src="/<%= product.productId.image[0] %>" alt="image"
+                                                            width="70px" />
+                                                    </a>
+                                                    <div class="media-body p-4">
+                                                        <h4 class="media-heading"
+                                                            style="font-weight: bold;font-size: 15px;">
+                                                            <%= product.productId.name %><a
+                                                                    href="product-single.html"></a>
+                                                        </h4>
+                                                        <!-- <p class="price">
+                                                            ₹&nbsp; <%= product.productId.price %>
+                                                        </p> -->
+                                                        <% if (product.productId.offerPrice) { %>
+                                                          <p class="price">
+                                                            
+                                                              <span class="offer-price">Offer Price: ₹ <%= product.productId.offerPrice %></span>
+                                                          </p>
+                                                      <% } else { %>
+                                                          <p class="price">
+                                                              ₹ <%= product.productId.price %>
+                                                          </p>
+                                                      <% } %>
+                                                        <span>Quantity: <%= product.quantity %></span>
+
+                                                        <td class="total price">
+                                                            <!-- <% var total=product.quantity * product.productId.price; %> -->
+                                                            <% var total = product.quantity * (product.productId.offerPrice ? product.productId.offerPrice : product.productId.price) %>
+
+                                                                <p id="product-total-price-<%= product.productId._id %>"
+                                                                    class="item-total">
+                                                                    <%= total %>
+                                                                </p>
+
+                                                        </td>
+                                                        <hr>
+                                                        <!-- <span class="remove">Remove</span> -->
+                                                    </div>
+
+                                                </div>
+                                                <% }); %>
+                                                <% } else { %>
+                                                  <p>No products in the cart.</p>
+                                              <% } %>
+                                                   
+                               
+                                            <div class="card">
+                                              <div class="card-body d-flex">
+                                                <form id="couponForm" action="/redeemCoupon" method="post" class="flex-grow-1">
+                                                  <div class="form-group d-flex align-items-center">
+                                                    <label for="couponCode" class="mr-1">Coupon Code:</label>
+                                                    <span class="mr-2">Available Coupons:</span>
+                                                    <a href="" data-toggle="modal" data-target="#exampleModal">View Coupons</a>
+                                                  </div>
+                                            
+                                                  <div class="form-group">
+                                                    <input type="text" class="form-control" name="coupon" id="couponCode" placeholder="Enter the coupon code">
+                                                  </div>
+                                            
+                                                  <div id="couponMessage" style="padding-bottom: 10px; color: darkred;"></div>
+                                                  <div id="couponMessage1" style="padding-bottom: 10px; color: rgb(7, 126, 13);"></div>
+                                            
+                                                  <button type="button" onclick="redeem()" class="btn btn-primary ml-auto">Redeem</button>
+                                                </form>
+                                              </div>
+                                            </div>
+                                            <div class="ml-auto mt-3 mb-3">
+                                              <button type="button" class="btn btn-primary" onclick="walletPay()">Use wallet to
+                                                 pay</button>
+                                              <span id="wallet"></span>
+                                              <!-- <i id="wallet_remove" onclick="deleteWallet()">
+                                                 <span></span>
+                                                             </i> -->
+             
+             
+                                              <style>
+                                                 .form-control::placeholder {
+                                                    font-weight: bold;
+                                                 }
+                                              </style>
+             
+                                          </div>
+                                            
+                                                    <ul class="summary-prices">
+                                                        <li>
+                                                            <span style="font-weight: bold;font-size: 15px;">Subtotal:
+                                                            </span>
+
+                                                            <span class="price" id="subtotal"></span>
+                                                        </li>
+                                                        <li>
+                                                            <span
+                                                                style="font-weight: bold;font-size: 15px;">Shipping:</span>
+                                                            <span>Free</span>
+                                                        </li>
+                                                    </ul>
+                                                    <span id="couponDiscount"></span>
+                                                    <div class="summary-total">
+                                                        <span style="font-weight: bold;font-size: 30px;">Total: </span>
+                                                        <span id="totalprice"
+                                                            style="font-weight: bold;font-size: 25px;"></span>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+              <div class="modal-header" style="text-align: center;">
+                  <h2 class="modal-title" id="exampleModalLabel" style="font-weight: bold; color: black;">Available Coupon</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  
+             
+                <% coupon.forEach(element => { %>
+                  <% if (!(new Date(element.date) < new Date()) || element.status !== true) { %>
+                      <p style="color: black; font-family: 'Times New Roman', Times, serif; font-weight: bolder;"><%= element.code %></p>
+                  <% } %>
+                  <% }) %>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-main" data-dismiss="modal"  style="color:beige">Close</button>
+              
+              </div>
+              </div>
+          </div>
+          </div>
+        <style>
+            .address-item {
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+            }
+
+            .same-line {
+                display: table
+            }
+
+            .same-line-in {
+                display: table-cell
+            }
+        </style>
+
+        <script>
+            const setSubtotal = () => {
+                const itemTotal = document.getElementsByClassName('item-total')
+                let subtotal = 0;
+                for (let i = 0; i < itemTotal.length; i++) {
+
+                    subtotal += Number(itemTotal[i].innerHTML)
+                }
+                document.getElementById('subtotal').innerHTML = subtotal;
+                document.getElementById('totalprice').innerHTML = subtotal;
+
+
+
+            }
+            setSubtotal();
+
+
+            //redeem coupon function
+            function redeem() {
+                var formData = $('#couponForm').serialize();
+        
+                $.ajax({
+                url: "/redeemCoupon",
+                type: "POST",
+                data: formData,
+                success: function(response) {                    
+                    // Handle the response here                    
+                    handleCouponResponse(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Coupon request failed. Status:', status);
+                }
+                });
+            }
+            function handleCouponResponse(response) {
+                  var couponMessage = document.getElementById('couponMessage');
+                  var couponCodeInput = document.getElementById('couponCode');
+                  var totalElement = document.getElementById('totalprice');
+                  var couponDiscountElement = document.getElementById('couponDiscount');
+
+                  if (couponCodeInput.value.trim() === '') {
+                      couponMessage.textContent = '';
+                      return;
+                  }
+
+                  if (response.success) {
+                      var couponValue = response.amount;
+                      var total = parseFloat(totalElement.textContent);
+                      var updatedTotal = total - couponValue;
+
+                      totalElement.textContent = updatedTotal.toFixed(2);
+                      couponMessage1.textContent = response.message;
+
+                      if (couponDiscountElement) {
+                          couponDiscountElement.textContent = 'Amount reduced from your Total price is: ' + response.amount.toFixed(2);
+                          couponDiscountElement.style.display = 'block';
+                      }
+                  } else {
+                      couponMessage.textContent = response.message;
+                      // Hide the coupon discount
+                      if (couponDiscountElement) {
+                          couponDiscountElement.style.display = 'none';
+                      }
+                  }
+              }
+
+
+        </script>
+
+
+
+
+
+<!-----------------------------------footer------------------------------>
+
+
+<footer class="bg3 p-t-75 p-b-32">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-lg-3 p-b-50">
+          <h4 class="stext-301 cl0 p-b-30">
+            Categories
+          </h4>
+  
+          <ul>
+            <li class="p-b-10">
+              <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                Women
+              </a>
+            </li>
+  
+            <li class="p-b-10">
+              <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                Men
+              </a>
+            </li>
+  
+            <li class="p-b-10">
+              <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                Shoes
+              </a>
+            </li>
+  
+            <li class="p-b-10">
+              <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                Watches
+              </a>
+            </li>
+          </ul>
+        </div>
+  
+        <div class="col-sm-6 col-lg-3 p-b-50">
+          <h4 class="stext-301 cl0 p-b-30">
+            Help
+          </h4>
+  
+          <ul>
+            <li class="p-b-10">
+              <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                Track Order
+              </a>
+            </li>
+  
+            <li class="p-b-10">
+              <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                Returns 
+              </a>
+            </li>
+  
+            <li class="p-b-10">
+              <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                Shipping
+              </a>
+            </li>
+  
+            <li class="p-b-10">
+              <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                FAQs
+              </a>
+            </li>
+          </ul>
+        </div>
+  
+        <div class="col-sm-6 col-lg-3 p-b-50">
+          <h4 class="stext-301 cl0 p-b-30">
+            GET IN TOUCH
+          </h4>
+  
+          <p class="stext-107 cl7 size-201">
+            Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+          </p>
+  
+          <div class="p-t-27">
+            <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+              <i class="fa fa-facebook"></i>
+            </a>
+  
+            <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+              <i class="fa fa-instagram"></i>
+            </a>
+  
+            <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+              <i class="fa fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+  
+        <div class="col-sm-6 col-lg-3 p-b-50">
+          <h4 class="stext-301 cl0 p-b-30">
+            Newsletter
+          </h4>
+  
+          <form>
+            <div class="wrap-input1 w-full p-b-4">
+              <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
+              <div class="focus-input1 trans-04"></div>
+            </div>
+  
+            <div class="p-t-18">
+              <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+      <div class="p-t-40">
+        <div class="flex-c-m flex-w p-b-18">
+          <a href="#" class="m-all-1">
+            <img src="userstyle/images/icons/icon-pay-01.png" alt="ICON-PAY">
+          </a>
+  
+          <a href="#" class="m-all-1">
+            <img src="userstyle/images/icons/icon-pay-02.png" alt="ICON-PAY">
+          </a>
+  
+          <a href="#" class="m-all-1">
+            <img src="userstyle/images/icons/icon-pay-03.png" alt="ICON-PAY">
+          </a>
+  
+          <a href="#" class="m-all-1">
+            <img src="userstyle/images/icons/icon-pay-04.png" alt="ICON-PAY">
+          </a>
+  
+          <a href="#" class="m-all-1">
+            <img src="userstyle/images/icons/icon-pay-05.png" alt="ICON-PAY">
+          </a>
+        </div>
+  
+        <p class="stext-107 cl6 txt-center">
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  
+        </p>
+      </div>
+    </div>
+  </footer>
+  
+  
+  <!-- Back to top -->
+  <div class="btn-back-to-top" id="myBtn">
+    <span class="symbol-btn-back-to-top">
+      <i class="zmdi zmdi-chevron-up"></i>
+    </span>
+  </div>
+  
+  
+
+  <script>
+                      function walletPay() {
+
+                                  
+                  // console.log("hai");
+                  $.ajax({
+                      url: "/wallet_buy",
+                      method: "POST",
+
+                      success: function (data) {
+
+                          // console.log(data,"kk");
+
+                          if (data.success) {
+                              setNewTotal(data.wallet_balance);
+                          } else {
+                              console.log('error');
+                          }
+                      },
+                      error: function (xhr, status, error) {
+                          console.error('Coupon request failed. Status:', status);
+                      }
+                  });
+
+                  }
+
+                  // const setNewTotal = (walletBalance) => {
+                  // const itemTotal = parseInt(document.getElementById('totalprice').innerHTML);
+                  // console.log("this is from walletBalance, itemtotal: ",itemTotal);
+                  // // let total = 0;
+                  // // for (let i = 0; i < itemTotal.length; i++) {
+                  // //    total += Number(itemTotal[i].innerHTML);
+                  // // }
+
+                  // let sum = (10 / 100) * itemTotal
+                  // console.log("this is from walletBalance, sum: ",sum);
+
+                  // if (walletBalance > sum) {
+                  //   newtotal = (itemTotal - sum)
+
+                  // } else {
+                  //     return alert('wallet Amount insufficient')
+                  // }
+
+                  // document.getElementById('wallet').innerHTML = ` wallet amount - ${sum}`;
+                  // document.getElementById('wallet_remove').innerHTML = `<i class="fa fa-times"></i>`;
+                  // document.getElementById('wallet').style.display = 'block';
+                  // document.getElementById('wallet_remove').style.display = 'inline';
+
+
+                  // document.getElementById('totalprice').innerHTML = ` ${newtotal}`;
+                  // }
+                  const setNewTotal = (walletBalance) => {
+  const itemTotal = parseInt(document.getElementById('subtotal').textContent);
+  let total = itemTotal;
+
+  // Calculate the discount amount based on the percentage
+  const discount = (10 / 100) * total;
+
+  if (walletBalance > discount) {
+    // Apply the discount and update the total
+    total -= discount;
+
+    // Update the HTML elements with the new values
+    document.getElementById('totalprice').textContent = total.toFixed(2);
+    document.getElementById('wallet').textContent = ` Wallet amount - ${discount.toFixed(2)}`;
+    document.getElementById('wallet').style.display = 'block';
+    document.getElementById('wallet_remove').style.display = 'inline';
+  } else {
+    alert('Wallet amount insufficient');
+
+    // Hide the wallet display
+    document.getElementById('wallet').style.display = 'none';
+    document.getElementById('wallet_remove').style.display = 'none';
+  }
+};
+
+
+                    // Function to delete the selected coupon
+                    function deleteCoupon() {
+
+                  $.ajax({
+                      url: "/delete_coupon",
+                      type: "post",
+                      success: function (data) {
+                          handleCouponResponse(data);
+                          hideDeleteCouponButton();
+                      },
+                      error: function () {
+                          console.log('error');
+                      }
+                  });
+
+                  function handleCouponResponse(data) {
+                      var couponMessage2 = document.getElementById('couponMessage');
+                      var totalElement = document.getElementById('totalprice');
+
+                      if (data.success) {
+                          var new_amount = data.totalPrice
+                          var total = parseFloat(totalElement.textContent);
+                          couponMessage2.textContent = data.message;
+
+                          console.log(total, "789678");
+                          console.log(new_amount, "789678");
+                          totalElement.textContent = new_amount
+
+                          setTimeout(function () {
+                              couponMessage2.textContent = '';
+                          }, 2000);
+
+                      } else {
+                          console.log('error');
+                      }
+                  }
+                  function hideDeleteCouponButton() {
+                      console.log("piopi");
+                      var deleteCouponButton = document.getElementById('deleteCouponButton');
+                      deleteCouponButton.style.display = 'none';
+                  }
+                  }
+  </script>
+
+  
+  <!--===============================================================================================-->	
+  <script src="/userstyle/vendor/jquery/jquery-3.2.1.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="/userstyle/vendor/animsition/js/animsition.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="/userstyle/vendor/bootstrap/js/popper.js"></script>
+  <script src="/userstyle/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="/userstyle/vendor/select2/select2.min.js"></script>
+  <script>
+    $(".js-select2").each(function(){
+      $(this).select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $(this).next('.dropDownSelect2')
+      });
+    })
+  </script>
+  <!--===============================================================================================-->
+  <script src="/userstyle/vendor/daterangepicker/moment.min.js"></script>
+  <script src="/userstyle/vendor/daterangepicker/daterangepicker.js"></script>
+  <!--===============================================================================================-->
+  <script src="/userstyle/vendor/slick/slick.min.js"></script>
+  <script src="/userstyle/js/slick-custom.js"></script>
+  <!--===============================================================================================-->
+  <script src="/userstyle/vendor/parallax100/parallax100.js"></script>
+  <script>
+        $('.parallax100').parallax100();
+  </script>
+  <!--===============================================================================================-->
+  <script src="/userstyle/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+  <script>
+    $('.gallery-lb').each(function() { // the containers for all your galleries
+      $(this).magnificPopup({
+            delegate: 'a', // the selector for gallery item
+            type: 'image',
+            gallery: {
+              enabled:true
+            },
+            mainClass: 'mfp-fade'
+        });
+    });
+  </script>
+  <!--===============================================================================================-->
+  <script src="/userstyle/vendor/isotope/isotope.pkgd.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="/userstyle/vendor/sweetalert/sweetalert.min.js"></script>
+  <script>
+    $('.js-addwish-b2').on('click', function(e){
+      e.preventDefault();
+    });
+  
+    $('.js-addwish-b2').each(function(){
+      var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+      $(this).on('click', function(){
+        swal(nameProduct, "is added to wishlist !", "success");
+  
+        $(this).addClass('js-addedwish-b2');
+        $(this).off('click');
+      });
+    });
+  
+    $('.js-addwish-detail').each(function(){
+      var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+  
+      $(this).on('click', function(){
+        swal(nameProduct, "is added to wishlist !", "success");
+  
+        $(this).addClass('js-addedwish-detail');
+        $(this).off('click');
+      });
+    });
+  
+    /*---------------------------------------------*/
+  
+    $('.js-addcart-detail').each(function(){
+      var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+      $(this).on('click', function(){
+        swal(nameProduct, "is added to cart !", "success");
+      });
+    });
+  
+  </script>
+  <!--===============================================================================================-->
+  <script src="/userstyle/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+  <script>
+    $('.js-pscroll').each(function(){
+      $(this).css('position','relative');
+      $(this).css('overflow','hidden');
+      var ps = new PerfectScrollbar(this, {
+        wheelSpeed: 1,
+        scrollingThreshold: 1000,
+        wheelPropagation: false,
+      });
+  
+      $(window).on('resize', function(){
+        ps.update();
+      })
+    });
+  </script>
+  
+  
+  
+  
+  
+  <!--===============================================================================================-->
+  <script src="/userstyle/js/main.js"></script>
+  
+  
+  
+  </body>
+  </html>
