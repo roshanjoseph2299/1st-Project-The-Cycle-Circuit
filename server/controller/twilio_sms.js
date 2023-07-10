@@ -110,12 +110,14 @@ exports.otp_for_signup = async (req, res, next) => {
         const newWallet = new Wallet({
           userId: user._id,
           balance: 100, // Set initial balance to 100 rupees
+          usedAmount :0
         });
 
         await newWallet.save();
       } else {
         // Wallet found, add 100 rupees to the balance
         wallet.balance += 100;
+        
         await wallet.save();
       }
     }
