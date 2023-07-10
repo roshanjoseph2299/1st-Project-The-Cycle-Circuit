@@ -650,7 +650,52 @@ exports.checkout = async (req, res) => {
 
 
 
+exports.paypal_success = async (req, res) => {
+  const payerId = req.query.PayerID;
+  const paymentId = req.query.paymentId;
+  const user = req.session.user;
+  const userId = req.session.user?._id;
 
+
+  
+  const execute_payment_json = {
+    "payer_id": payerId,
+    "transactions": [{
+      "amount": {
+        "currency": "USD",
+        "total": paypalTotal
+      }
+    }]
+  };
+
+  paypal.payment.execute(paymentId, execute_payment_json, function(error, payment) {
+    if (error) {
+      if (error.response && error.response.name === 'PAYER_ACTION_REQUIRED') {
+        // Redirect the buyer to the PayPal resolution link
+        const resolutionLink = error.response.links.find(link => link.rel === 'https://uri.paypal.com/rel/resolution');
+        if (resolutionLink) {
+          res.redirect(resolutionLink.href);
+        } else {
+          // Handle the case when resolution link is not available
+          console.log('Resolution link not found.');
+          throw error;
+        }
+      } else {
+        console.log(error);
+        throw error;
+      }
+    } else {
+      console.log(JSON.stringify(payment));
+      res.render("user/paypal_success", { payment, user, userId,user: req.session.user });
+    }
+  });
+};
+
+exports.paypal_err = (req, res) => {
+  console.log("Hi Error");
+  console.log(req.query)
+  res.render('user/payapal_cancel',{user: req.session.user})
+}
 
 
 
