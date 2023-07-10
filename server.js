@@ -78,9 +78,9 @@ const jsonParser = bodyparser.json()
 
 
   // Catch-all route for 404 page
-// app.use((req, res) => {
-//   res.status(404).render('user/error');
-// });
+app.use((req, res) => {
+  res.status(404).render('user/error');
+});
 
   app.listen(PORT,()=>{
     console.log(`server started at http://localhost:${PORT}`);
