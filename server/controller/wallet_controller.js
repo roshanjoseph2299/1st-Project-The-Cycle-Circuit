@@ -50,7 +50,7 @@ exports.userwallet =async (req,res) =>{
 }
 
 
-exports.wallet_pay = async(req,res)=>{
+exports. wallet_pay = async(req,res)=>{
 if(req.session.user){
   try{
     const userId = req.session.user._id

@@ -451,7 +451,7 @@
                                               </div>
                                             </div>
                                             <div class="ml-auto mt-3 mb-3">
-                                              <button type="button" class="btn btn-primary" onclick="walletPay()">Use wallet to
+                                              <button type="button" class="btn btn-primary" onclick="walletPay()" id="walletButton">Use wallet to
                                                  pay</button>
                                               <span id="wallet"></span>
                                               <!-- <i id="wallet_remove" onclick="deleteWallet()">
@@ -769,7 +769,7 @@
   <script>
                       function walletPay() {
 
-                                  
+                        document.getElementById("walletButton").disabled = true;  
                   // console.log("hai");
                   $.ajax({
                       url: "/wallet_buy",
