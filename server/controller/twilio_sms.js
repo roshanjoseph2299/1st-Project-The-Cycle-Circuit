@@ -87,52 +87,96 @@ exports.verify_password_OTP = async (req, res) => {
 
 };
 
-
 exports.otp_for_signup = async (req, res, next) => {
-  const { phone ,referralCode  } = req.body;
-  req.session.signupDetails=req.body
-  req.session.phone=phone
+  const { phone, referralCode } = req.body;
+  req.session.signupDetails = req.body;
+  req.session.phone = phone;
+
   try {
+    if (referralCode) {
+      // Check if referralCode exists in the database
+      const user = await userSchema.findOne({ phone: referralCode });
 
-    // Check if referralCode exists in the database
-    const user = await userSchema.findOne({ phone: referralCode });
+      if (!user) {
+        // Referral code does not match any existing user
+        return res.status(400).send("Invalid referral code!");
+      }
 
-    if (!user) {
-      // Referral code does not match any existing user
-      return res.status(400).send("Invalid referral code!");
+      // Referral code is valid, proceed with updating wallet balance
+      const wallet = await Wallet.findOne({ userId: user._id });
+
+      if (!wallet) {
+        // Wallet not found for the user, create a new wallet
+        const newWallet = new Wallet({
+          userId: user._id,
+          balance: 100, // Set initial balance to 100 rupees
+        });
+
+        await newWallet.save();
+      } else {
+        // Wallet found, add 100 rupees to the balance
+        wallet.balance += 100;
+        await wallet.save();
+      }
     }
 
-    // Referral code is valid, proceed with updating wallet balance
-    const wallet = await Wallet.findOne({ userId: user._id });
-    
-    if (!wallet) {
-      // Wallet not found for the user, create a new wallet
-      const newWallet = new Wallet({
-        userId: user._id,
-        balance: 100, // Set initial balance to 100 rupees
-      });
-      
-      await newWallet.save();
-    } else {
-      // Wallet found, add 100 rupees to the balance
-      wallet.balance += 100;
-      await wallet.save();
-    }
+    const otpResponse = await client.verify.v2.services(serviceSid).verifications.create({
+      to: "+91" + phone,
+      channel: "sms",
+    });
 
-
-    const otpResponse = await client.verify.v2
-      .services(serviceSid)
-      .verifications.create({
-        to: "+91"+phone,
-        channel: "sms",
-      });
-     res.render('user/otp_for_signup')
+    res.render("user/otp_for_signup");
   } catch (error) {
     res.status(error?.status || 400).send(error?.message || "Something went wrong!");
   }
+};
+
+
+// exports.otp_for_signup = async (req, res, next) => {
+//   const { phone ,referralCode  } = req.body;
+//   req.session.signupDetails=req.body
+//   req.session.phone=phone
+//   try {
+
+//     // Check if referralCode exists in the database
+//     const user = await userSchema.findOne({ phone: referralCode });
+
+//     if (!user) {
+//       // Referral code does not match any existing user
+//       return res.status(400).send("Invalid referral code!");
+//     }
+
+//     // Referral code is valid, proceed with updating wallet balance
+//     const wallet = await Wallet.findOne({ userId: user._id });
+    
+//     if (!wallet) {
+//       // Wallet not found for the user, create a new wallet
+//       const newWallet = new Wallet({
+//         userId: user._id,
+//         balance: 100, // Set initial balance to 100 rupees
+//       });
+      
+//       await newWallet.save();
+//     } else {
+//       // Wallet found, add 100 rupees to the balance
+//       wallet.balance += 100;
+//       await wallet.save();
+//     }
+
+
+//     const otpResponse = await client.verify.v2
+//       .services(serviceSid)
+//       .verifications.create({
+//         to: "+91"+phone,
+//         channel: "sms",
+//       });
+//      res.render('user/otp_for_signup')
+//   } catch (error) {
+//     res.status(error?.status || 400).send(error?.message || "Something went wrong!");
+//   }
 
   
-};
+// };
   
 
 exports.verify_signup_otp = async (req, res) => {
