@@ -255,51 +255,27 @@
 
 <!---------=main--------->
 
-<div class="flex-w flex-sb-m p-b-52">
-				
-  <!-- Search product -->
-  <div class="dis-none panel-search w-full p-t-10 p-b-15">
-    <div class="bor8 dis-flex p-l-15">
-      <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-        <i class="zmdi zmdi-search"></i>
-      </button>
+<h1>Add Address </h1>
 
-      <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
-    </div>	
-  </div>
+<form action="/addUserAddress/<%= user._id %>" method="POST">
+      
+     
 
-</div>
+  <label for="address">Address:</label>
+  <input type="text" id="address" name="address" required>
 
-<div class="container">
-<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+  <label for="city">City:</label>
+  <input type="text" id="city" name="city" required>
 
-</div>
-</div>
-<h1>Edit User Details</h1>
+  <label for="state">State:</label>
+  <input type="text" id="state" name="state" required>
 
-<form  action="/update_user/<%= user._id%>" method="POST" >
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" value="<%= user.name %>" required>
+  <label for="pincode">Pincode:</label>
+  <input type="text" id="pincode" name="pincode" required>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" value="<%= user.email %>" required>
 
-    <label for="phone">Phone:</label>
-    <input type="tel" id="phone" name="phone" value="<%= user.phone %>" required>
 
-    <label for="address">Address:</label>
-    <textarea id="address" name="address" required><%= user.address[0].address %></textarea>
-
-    <label for="state">State:</label>
-    <input type="text" id="state" name="state" value="<%= user.address[0].state %>" required>
-
-    <label for="city">City:</label>
-    <input type="text" id="city" name="city" value="<%= user.address[0].city %>" required>
-
-    <label for="pincode">Pincode:</label>
-    <input type="text" id="pincode" name="pincode" value="<%=user.address[0].pincode %>" required>
-
-    <input type="submit" value="Update">
+  <input type="submit" value="Submit">
 </form>
 
  <!-----footer----->

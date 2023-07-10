@@ -124,6 +124,46 @@ exports.edituser =async(req,res)=>{
   res.render('user/user_login')
 }}
 
+exports.edituserAddress =async(req,res)=>{
+  if(req.session.user){
+    try{
+      const id=req.session.user?._id
+      const user = await userSchema.findOne({_id:id})
+      res.render('user/addUser_address',{user})
+    }catch (error) {
+        
+    }
+ 
+}else{
+  res.render('user/user_login')
+}}
+
+exports.addUserAddress = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    console.log(userId)
+    const { address, city, state, pincode } = req.body;
+
+    const user = await userSchema.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    console.log(user)
+    
+    // Add the new address to the user's address array
+    user.address.push({ address: address, city: city, state: state, pincode: pincode });
+
+    await user.save();
+
+    // Redirect to a success page or send a success response
+    res.redirect('/user_detail?msg=Address added successfully');
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+
 
 exports.update_user = async (req, res) => {
   try {

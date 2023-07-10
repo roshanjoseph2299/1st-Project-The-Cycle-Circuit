@@ -45,7 +45,12 @@ route.get('/',user_controller.user_homepage)
 route.get('/login_page',user_controller.user_login)
 route.get('/user_detail',user_controller.user_page)
 route.get('/edit_user_details',user_controller.edituser)
+route.get('/editUserAssress',user_controller.edituserAddress)
+
+
 route.post('/update_user/:id',user_controller.update_user)
+route.post('/addUserAddress/:id',user_controller.addUserAddress)
+
 route.get('/logout_user',user_controller.user_logout)
 route.post('/login',user_controller.find_user)
 route.get('/forgot_password',user_controller.forgot_password)
