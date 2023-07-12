@@ -75,8 +75,8 @@
                               <tr>
                                   <th scope="row"><%= index + 1 %></th>
                                   <td><%= coupon.code %></td>
-                                  <td><%= coupon.startingDate.toLocaleDateString() %></td>
-                                  <td><%= coupon.expiryDate.toLocaleDateString() %></td>
+                                  <td><%= coupon.startingDate ? coupon.startingDate.toLocaleDateString() : '' %></td>
+                                  <td><%= coupon.expiryDate ? coupon.expiryDate.toLocaleDateString() : '' %></td>
                                   <td><%= coupon.discount %></td>
                                   <td>
                                       <a href="/delete-coupon/<%= coupon._id %> " onclick="confirmdelete('<%= coupon._id %>')">
